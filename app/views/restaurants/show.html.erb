@@ -1,0 +1,66 @@
+<p>
+	<strong>Name:</strong>
+	<%= @restaurant.name %>
+</p>
+<p>
+	<strong>Description:</strong>
+	<%= @restaurant.description %>
+</p>
+<p>
+	<strong>Address:</strong>
+	<%= @restaurant.address %>
+</p>
+<p>
+	<strong>Phone:</strong>
+	<%= @restaurant.phone %>
+</p>
+
+<h2>Dishes</h2>
+<% @restaurant.dishes.each do |dish| %>
+	<p>
+		<strong>Id:</strong>
+		<%= dish.id %>
+	</p>
+	<p>
+		<strong>Dishgroup:</strong>
+		<%= dish.dishgroup %>
+	</p>
+	<p>
+		<strong>Dish:</strong>
+		<%= dish.name %>
+	</p>
+	<p>
+		<strong>Description:</strong>
+		<%= dish.description %>
+	</p>
+	<p>
+		<strong>Price:</strong>
+		<%= dish.price %>
+	</p>
+<% end %>
+
+<h2>Add Dishes</h2>
+<%= form_with(model: [ @restaurant, @restaurant.dishes.build ], local: true) do |form| %>
+	<p>
+		<%= form.label :dishgroup %>
+		<%= select_tag(:dishgroup, options_for_select([['Entrees', 'Entrees'], ['Soups & Salads', 'Soups&Salads'], ['Deserts', 'Deserts'], ['Drinks', 'Drinks']])) %>
+	</p>
+	<p>
+		<%= form.label :name %>
+		<%= form.text_field :name %>
+	</p>
+	<p>
+		<%= form.label :description %>
+		<%= form.text_field :description %>
+	</p>
+	<p>
+		<%= form.label :price %>
+		<%= form.text_field :price %>
+	</p>
+	<p>
+		<%= form.submit %>
+	</p>
+<% end %>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
+<%= link_to 'Back', restaurants_path %>
