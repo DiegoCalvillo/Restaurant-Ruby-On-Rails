@@ -1,43 +1,65 @@
-<p>
-	<strong>Name:</strong>
-	<%= @restaurant.name %>
-</p>
-<p>
-	<strong>Description:</strong>
-	<%= @restaurant.description %>
-</p>
-<p>
-	<strong>Address:</strong>
-	<%= @restaurant.address %>
-</p>
-<p>
-	<strong>Phone:</strong>
-	<%= @restaurant.phone %>
-</p>
-
-<h2>Dishes</h2>
-<% @restaurant.dishes.each do |dish| %>
-	<p>
-		<strong>Id:</strong>
-		<%= dish.id %>
-	</p>
-	<p>
-		<strong>Dishgroup:</strong>
-		<%= dish.dishgroup %>
-	</p>
-	<p>
-		<strong>Dish:</strong>
-		<%= dish.name %>
-	</p>
-	<p>
-		<strong>Description:</strong>
-		<%= dish.description %>
-	</p>
-	<p>
-		<strong>Price:</strong>
-		<%= dish.price %>
-	</p>
-<% end %>
+<div class="container">
+	<div class="panel-heading">
+		<h3><b>Restaurants</b></h3>
+	</div>
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="form-group">
+							<strong>Name:</strong>
+							<%= @restaurant.name %>
+						</div>
+						<div class="form-group">
+							<strong>Description:</strong>
+							<%= @restaurant.description %>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="form-group">
+							<strong>Address:</strong>
+							<%= @restaurant.address %>
+						</div>
+						<div class="form-group">
+							<strong>Phone:</strong>
+							<%= @restaurant.phone %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel-heading">
+		<h3><b>Dishes</b></h3> 
+	</div>
+	<div class="col-lg-12">
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-lg-6">
+					<% @restaurant.dishes.each do |dish| %>
+						<div class="form-group">
+							<strong>Id:</strong>
+							<%= dish.id %>
+						</div>
+						<div class="form-group">
+							<strong>Dishgroup:</strong>
+							<%= dish.dishgroup %>
+						</div>
+						<div class="form-group">
+							<strong>Dish:</strong>
+							<%= dish.name %>
+						</div>
+						<div class="form-group">
+							<strong>Price:</strong>
+							<%= dish.price %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <h2>Add Dishes</h2>
 <%= form_with(model: [ @restaurant, @restaurant.dishes.build ], local: true) do |form| %>
